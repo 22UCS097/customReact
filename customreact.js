@@ -11,11 +11,21 @@ const data={
 }
 
 function customrender(data,box){
+    /*
     const domElement=document.createElement(data.type);
     domElement.innerHTML=`${data.children}`;
     domElement.setAttribute('href',data.props.href);
     domElement.setAttribute('target',data.props.target);
      box.appendChild(domElement);
+     */
+    //version_02
+    const domElement=document.createElement(data.type);
+    domElement.innerHTML=data.children;
+    for (const prop in data.props) {
+        if(prop==data.children) continue;
+        domElement.setAttribute(prop,data.props[prop]);    
+    }
+    box.appendChild(domElement);
 
 }
 
